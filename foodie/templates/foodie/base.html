@@ -22,14 +22,14 @@
                 <ul class="navbar-nav ml-auto">
                     {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link" href="">ログアウト</a>
+                            <a class="nav-link" href="{% url 'account_logout' %}">ログアウト</a>
                         </li>
                     {% else %}
                         <li class="nav-item">
-                            <a class="nav-link" href="">サインアップ</a>
+                            <a class="nav-link" href="{% url 'account_signup' %}">サインアップ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">ログイン</a>
+                            <a class="nav-link" href="{% url 'account_login' %}">ログイン</a>
                         </li>
                     {% endif %}
                 </ul>
@@ -42,6 +42,26 @@
 
     <main>
         <div class="container">
+            <!-- 通知メッセージ -->
+            {% if messages %}
+                <div class="row align-items-center my-3">
+                    <div class="col-12">
+                        <div class="message text-center">
+                            {% for message in messages %}
+                                <div class="alert{% if message.tags %} alert-{{ message.tags }}{% endif %} alert-dismissible" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">
+                                            &times;
+                                        </span>
+                                    </button>
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
             <!-- メイン -->
             {% block content %}
 			{% endblock content %}

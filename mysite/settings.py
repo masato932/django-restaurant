@@ -38,6 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'foodie.apps.FoodieConfig', # 追加
+    'accounts.apps.AccountsConfig', # 追加
+    'django.contrib.sites', # 追加
+    'allauth',  # 追加
+    'allauth.account', # 追加
 ]
 
 MIDDLEWARE = [
@@ -120,3 +124,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# 一番下に追加
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/'
+# SignUpした時に確認Emailアドレスを送信しない場合
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+# SignUpした時に確認Emailアドレスを送信する場合
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = 'gmail adress'
+# EMAIL_HOST_PASSWORD = 'gmail password'
+# EMAIL_USE_TLS = True

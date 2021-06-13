@@ -19,4 +19,5 @@ from django.urls import path, include # 追加
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('foodie.urls')), # 追加
+    path('accounts/', include('allauth.urls')), # 追加
 ]
